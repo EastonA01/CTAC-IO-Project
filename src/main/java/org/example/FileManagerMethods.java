@@ -36,6 +36,7 @@ public class FileManagerMethods extends Component {
                     Path destPath = Paths.get(dest.getAbsolutePath() + "\\" + source.getName());
                     Files.copy(source.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
                 }catch(Exception e) {
+                    JOptionPane.showMessageDialog(frame, "Error Copying File.", "Error", JOptionPane.ERROR_MESSAGE);
                     System.out.println("Error copying file: " + e.getMessage());
                 }
             }
@@ -57,6 +58,7 @@ public class FileManagerMethods extends Component {
                     Path destPath = Paths.get(dest.getAbsolutePath() + "\\" + source.getName());
                     Files.move(source.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
                 }catch(Exception e) {
+                    JOptionPane.showMessageDialog(frame, "Error moving file.", "Error", JOptionPane.ERROR_MESSAGE);
                     System.out.println("Error moving file: " + e.getMessage());
                 }
             }
@@ -69,7 +71,7 @@ public class FileManagerMethods extends Component {
         int reply = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete the selected file?");
         if (reply == JOptionPane.YES_OPTION) {
            if(!source.delete()) {
-               JOptionPane.showMessageDialog(frame, "Failed to delete the selected file.");
+               JOptionPane.showMessageDialog(frame, "Failed to delete the selected file.", "Error", JOptionPane.ERROR_MESSAGE);
            }
            else{
                JOptionPane.showMessageDialog(frame, "Successfully deleted the selected file.");
