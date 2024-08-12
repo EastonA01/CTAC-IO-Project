@@ -42,7 +42,13 @@ public class GuiComponents implements ActionListener {
         topPanel.add(refreshButton);
 
         // File table
-        tableModel = new DefaultTableModel(new Object[]{"Name", "Size (in bytes)", "Last Modified"}, 0);
+        tableModel = new DefaultTableModel(new Object[]{"Name", "Size (in bytes)", "Last Modified"}, 0){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
         fileTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(fileTable);
 
